@@ -5,16 +5,14 @@
 # 3.1. Descreva o problema com a query executada na action index e
 # reescreva a query, corrigindo o problema.
 #
-# Resposta: O problema com a query executada na action index do controlador
-# é que ela pode causar um problema de N+1, o que significa que
-# para cada registro de Customer, está sendo realizada uma consulta
+# Resposta: O problema com a query é que ela pode causar um problema de N+1,
+# o que significa que para cada registro de Customer, está sendo realizada uma consulta
 # adicional para carregar o nome do operador e a lista de locais.
-# Isso pode levar a um grande número de consultas ao banco de dados,
-# o que é ineficiente.
+# Isso pode levar a um grande número de consultas ao banco de dados.
 #
 # Para corrigir esse problema, podemos usar o método includes para
 # pré-carregar os relacionamentos necessários junto com os clientes
-# em uma única consulta. Aqui está a reescrita da query:
+# em uma única consulta.
 
 # app/controllers/customer_controller.rb
 class CustomersController < ApplicationController
@@ -30,8 +28,7 @@ class CustomersController < ApplicationController
   end
 end
 
-# Com essas alterações, você terá adicionado com sucesso a
-# action block ao controlador de Customers e configurado a
-# rota correspondente. Agora, você pode acessar a action block
+# Adicionamos a action block ao controlador de Customers e configuramos
+# a rota correspondente. Agora, podemos acessar a action block
 # por meio de uma URL como /customers/1/block, onde 1 é o ID
-# do cliente que você deseja bloquear.
+# do cliente a ser bloqueado.

@@ -40,3 +40,25 @@ end
   <% end %>
 </tbody>
 </table>
+
+# app/views/orders/index.html.erb
+<h1>Lista de Pedidos do Cliente: <%= @customer.name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Valor</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= number_to_currency(order.value) %></td>
+        <td><%= order.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

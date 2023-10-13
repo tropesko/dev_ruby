@@ -1,6 +1,5 @@
-# character_counter_spec.rb
 require 'rspec'
-require_relative 'character_counter' # Adjust the path to the CharacterCounter class
+require_relative 'character_counter'
 
 describe CharacterCounter do
   describe '#character_count' do
