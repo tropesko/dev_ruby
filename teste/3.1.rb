@@ -31,4 +31,4 @@ end
 # Adicionamos a action block ao controlador de Customers e configuramos
 # a rota correspondente. Agora, podemos acessar a action block
 # por meio de uma URL como /customers/1/block, onde 1 é o ID
-# do cliente a ser bloqueado.
+# do costumer a ser bloqueado.
