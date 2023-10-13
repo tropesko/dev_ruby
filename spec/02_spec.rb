@@ -1,5 +1,4 @@
-require_relative '../calculator'
-require_relative '../command'
+require '../teste/2.rb'
 
 describe Calculator do
   describe '#interpret_command' do
@@ -24,13 +23,13 @@ describe Calculator do
     it 'executes division' do
       calculator = Calculator.new
       result = calculator.interpret_command('DIV 234 -34.56')
-      expect(result).to eq(-6.772626931567328)
+      expect(result).to eq(-6.770833333333333)
     end
 
     it 'divides by zero' do
       calculator = Calculator.new
       result = calculator.interpret_command('DIV 2 0')
-      expect(result).to eq('Erro: Divisão por zero')
+      expect(result).to eq('Error: Division by zero')
     end
 
     it 'invalid commands' do

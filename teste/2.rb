@@ -15,6 +15,12 @@
 # Se um comando for inválido, deve dar exceção. Forneça as classes
 # utilizadas com os testes unitários.
 
+class InvalidCommandError < StandardError
+end
+
+class DivisionByZeroError < StandardError
+end
+
 class Calculator
   def initialize
     @result = nil
@@ -34,17 +40,48 @@ class Calculator
       @result = n1 * n2
     when 'DIV'
       if n2 == 0
-        return "Error: Division by zero"
+        raise DivisionByZeroError, "Error: Division by zero"
       else
         @result = n1 / n2
       end
     else
-      return "Error: invalid command"
+      raise InvalidCommandError, "Error: Invalid command"
     end
 
     @result
   end
 end
+
+# class Calculator
+#   def initialize
+#     @result = nil
+#   end
+
+#   def interpret_command(command)
+#     operation, n1, n2 = command.split
+#     n1 = n1.to_f
+#     n2 = n2.to_f
+
+#     case operation
+#     when 'ADD'
+#       @result = n1 + n2
+#     when 'SUB'
+#       @result = n1 - n2
+#     when 'MUL'
+#       @result = n1 * n2
+#     when 'DIV'
+#       if n2 == 0
+#         return "Error: Division by zero"
+#       else
+#         @result = n1 / n2
+#       end
+#     else
+#       return "Error: invalid command"
+#     end
+
+#     @result
+#   end
+# end
 
 class Command
   def initialize(command_str)
@@ -53,15 +90,25 @@ class Command
 
   def execute
     calculator = Calculator.new
-    result = calculator.interpret_command(@command_str)
+    result = nil
+    begin
+      result = calculator.interpret_command(@command_str)
+    rescue InvalidCommandError, DivisionByZeroError => e
+      result = e.message
+    end
     result
   end
+
+  # def execute
+  #   calculator = Calculator.new
+  #   result = calculator.interpret_command(@command_str)
+  #   result
+  # end
 end
 
-# Teste
 puts Command.new('TESTE 2 2').execute
-puts Command.new('ADD 12 -45').execute
-puts Command.new('SUB 12 -37.5').execute
-puts Command.new('MUL 0 +346').execute
-puts Command.new('DIV 2 0').execute
-puts Command.new('DIV 234 -34.56').execute
+# puts Command.new('ADD 12 -45').execute
+# puts Command.new('SUB 12 -37.5').execute
+# puts Command.new('MUL 0 +346').execute
+# puts Command.new('DIV 2 0').execute
+# puts Command.new('DIV 234 -34.56').execute

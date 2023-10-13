@@ -23,7 +23,7 @@ class CharacterCounter
 end
 
 # Testes
-input_string = "Paralelepípedo"
-counter = CharacterCounter.new(input_string)
-result = counter.character_count
-puts result
+# input_string = "Paralelepípedo"
+# counter = CharacterCounter.new(input_string)
+# result = counter.character_count
+# puts result

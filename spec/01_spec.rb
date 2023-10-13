@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative 'character_counter'
+require '../teste/1.rb'
 
 describe CharacterCounter do
   describe '#character_count' do
@@ -9,7 +9,7 @@ describe CharacterCounter do
 
       result = counter.character_count
 
-      expect(result).to eq({ 'a' => 2, 'b' => 2, 'ó' => 1, 'o' => 1, 'r' => 1 })
+      expect(result).to eq({"p"=>3, "a"=>2, "r"=>1, "l"=>2, "e"=>3, "í"=>1, "d"=>1, "o"=>1})
     end
 
     it 'returns an empty hash for an empty string' do
@@ -22,15 +22,12 @@ describe CharacterCounter do
     end
 
     it 'handles special characters and numbers correctly' do
-      input_string = 'Paralelepípedo'
+      input_string = '123teste123'
       counter = CharacterCounter.new(input_string)
 
       result = counter.character_count
 
-      expect(result).to eq({"p"=>3, "a"=>2, "r"=>1, "l"=>2, "e"=>3, "í"=>1, "d"=>1, "o"=>1})
+      expect(result).to eq({"t"=>2, "e"=>2, "s"=>1})
     end
   end
 end
-
-# Testes
-rspec character_counter_spec.rb
