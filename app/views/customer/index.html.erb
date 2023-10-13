@@ -1,0 +1,21 @@
+<!-- app/views/customer/index.html.erb -->
+<table>
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Operador</th>
+      <th>Locais</th>
+      <th>Pedidos</th> <!-- Nova coluna para o link de pedidos -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.name %></td>
+        <td><%= customer.operator.name %></td>
+        <td><%= customer.locations.map(&:name).join(', ') %></td>
+        <td><%= link_to 'Ver Pedidos', customer_orders_path(customer) %></td> <!-- Link para a página de pedidos -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>

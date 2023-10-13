@@ -1,3 +1,20 @@
+# 2. Você deve implementar uma classe que interpreta um comando simples
+# em Ruby. Os comandos possíveis são strings de operações aritméticas
+# básicas e possuem os seguintes formatos:
+# ADD N1, N2
+# SUB N1, N2
+# MUL N1, N2
+# DIV N1, N2
+# N1 e N2 são sempre números, não podem ser expressões. O separador
+# decimal deve sempre ser o '.'.
+#
+# Ao executar um comando o resultado deve ser retornado. Por exemplo:
+# > Command.new('ADD 12, 45').execute
+# 57
+#
+# Se um comando for inválido, deve dar exceção. Forneça as classes
+# utilizadas com os testes unitários.
+
 class Calculator
   def initialize
     @result = nil
